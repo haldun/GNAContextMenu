@@ -96,8 +96,8 @@ public class GNAMenuView: UIView {
     }
     
     public func dismissMenuView(point: CGPoint) {
-        detectPoint(point, action: { (menuItem: GNAMenuItem) in
-            delegate?.menuItemWasPressed?(menuItem, info: additionalInfo)
+        detectPoint(point, action: { [weak self] (menuItem: GNAMenuItem) in
+            self?.delegate?.menuItemWasPressed?(menuItem, info: self?.additionalInfo)
         })
         deactivateCurrentItem()
         self.removeFromSuperview()
